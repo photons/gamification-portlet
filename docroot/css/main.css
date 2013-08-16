@@ -1,0 +1,34 @@
+
+
+.my-badges-portlet .badge, .badges-gallery-portlet .badge {
+	display: inline-block;
+	text-align: center;
+	margin: 5px 5px 5px 5px;
+}
+
+.my-badges-portlet .badge .title, .badges-gallery-portlet .badge .title {
+	font-size: smaller;
+	font-weight: bold
+}
+
+.my-badges-portlet .badge.masked .title, .badges-gallery-portlet .badge.masked .title {
+	color: #a7a8aa;
+}
+
+.my-badges-portlet .badge img, .badges-gallery-portlet .badge img {
+	width:  98px;
+	height: 94.5px;
+}
+
+.badges-gallery-portlet .badge .description { 
+	vertical-align: middle;
+	line-height: 100%;
+	font-size: larger;
+	margin-left: 8em;
+}
+
+.badges-gallery-portlet .attributions { 
+	text-align: right;
+	width: 100%;
+	font-size: xx-small;
+}

@@ -1,0 +1,15 @@
+<% 
+for(BadgeDefinition badgeDefinition: BadgesEngine.getBadgeDefinitions()) { 
+	
+	String name = badgeDefinition.getName();
+	
+	Badge badge = BadgeLocalServiceUtil.fetchBadge(user2.getUserId(), name);
+	
+	boolean masked = (badge == null || badge.getBadgeLevel() == 0);
+	
+%>
+	<%@ include file="/html/badge.jspf" %>
+<%
+} 
+%>
+</table>

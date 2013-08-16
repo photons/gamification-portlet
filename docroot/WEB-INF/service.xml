@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.1.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_1_0.dtd">
+<service-builder package-path="gamification">
+	<author>Sebastien Le Marchand</author>
+	<namespace>GM</namespace>
+
+	<entity name="Badge" local-service="true" remote-service="false">
+
+		<!-- PK fields -->
+
+		<column name="badgeId" type="long" primary="true" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+
+		<column name="badgeName" type="String" />
+		<column name="badgeLevel" type="int" />
+		<column name="data" type="String" />
+
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="userId" />
+			<order-column name="createDate" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="UserIdBadgeName" return-type="Badge">
+			<finder-column name="userId" />
+			<finder-column name="badgeName" />
+		</finder>
+		
+		<finder name="UserId" return-type="Collection">
+			<finder-column name="userId" />
+		</finder>
+		
+	</entity>
+</service-builder>
