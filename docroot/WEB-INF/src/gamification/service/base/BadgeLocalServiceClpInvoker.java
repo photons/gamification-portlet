@@ -121,6 +121,16 @@ public class BadgeLocalServiceClpInvoker {
 		_methodName45 = "getBadges";
 
 		_methodParameterTypes45 = new String[] { "long" };
+
+		_methodName46 = "updateBadge";
+
+		_methodParameterTypes46 = new String[] { "gamification.model.Badge" };
+
+		_methodName47 = "updateBadge";
+
+		_methodParameterTypes47 = new String[] {
+				"gamification.model.Badge", "boolean"
+			};
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -245,6 +255,17 @@ public class BadgeLocalServiceClpInvoker {
 			return BadgeLocalServiceUtil.getBadges(((Long)arguments[0]).longValue());
 		}
 
+		if (_methodName46.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes46, parameterTypes)) {
+			return BadgeLocalServiceUtil.updateBadge((gamification.model.Badge)arguments[0]);
+		}
+
+		if (_methodName47.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes47, parameterTypes)) {
+			return BadgeLocalServiceUtil.updateBadge((gamification.model.Badge)arguments[0],
+				((Boolean)arguments[1]).booleanValue());
+		}
+
 		throw new UnsupportedOperationException();
 	}
 
@@ -292,4 +313,8 @@ public class BadgeLocalServiceClpInvoker {
 	private String[] _methodParameterTypes44;
 	private String _methodName45;
 	private String[] _methodParameterTypes45;
+	private String _methodName46;
+	private String[] _methodParameterTypes46;
+	private String _methodName47;
+	private String[] _methodParameterTypes47;
 }

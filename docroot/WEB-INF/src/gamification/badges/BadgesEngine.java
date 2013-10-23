@@ -1,8 +1,19 @@
+/**
+ * Copyright (c) 2013 Sébastien Le Marchand, All rights reserved.
+ *
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ */
+
 package gamification.badges;
 
-
-import gamification.badges.impl.CleanerBadge;
-import gamification.badges.impl.CriticBadge;
 import gamification.badges.impl.HumanBadge;
 import gamification.badges.impl.LibrarianBadge;
 import gamification.badges.impl.NewbieBadge;
@@ -12,7 +23,6 @@ import gamification.badges.impl.RabbitBadge;
 import gamification.badges.impl.RegularBadge;
 import gamification.badges.impl.SuperstarBadge;
 import gamification.badges.impl.TalkativeBadge;
-import gamification.badges.impl.ThumbAddictBadge;
 import gamification.badges.impl.WriterBadge;
 
 import java.util.LinkedList;
@@ -25,7 +35,9 @@ import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portlet.asset.model.AssetEntry;
 import com.liferay.portlet.social.model.SocialActivity;
 
-
+/**
+ * @author Sebastien Le Marchand
+ */
 public class BadgesEngine {
 	
 	public static void processActivity(SocialActivity activity) throws SystemException {

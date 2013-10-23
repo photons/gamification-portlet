@@ -3,3 +3,7 @@
 # Package Files #
 *.war
 *.ear
+.classpath
+.project
+docroot/WEB-INF/classes
+portal-compat-client.jar
