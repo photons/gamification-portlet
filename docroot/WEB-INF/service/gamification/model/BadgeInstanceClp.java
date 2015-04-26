@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2012 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -17,16 +17,18 @@ package gamification.model;
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.util.DateUtil;
+import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.impl.BaseModelImpl;
 import com.liferay.portal.util.PortalUtil;
 
-import gamification.service.BadgeLocalServiceUtil;
+import gamification.service.BadgeInstanceLocalServiceUtil;
+import gamification.service.ClpSerializer;
 
 import java.io.Serializable;
 
-import java.lang.reflect.Proxy;
+import java.lang.reflect.Method;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -35,30 +37,37 @@ import java.util.Map;
 /**
  * @author Sebastien Le Marchand
  */
-public class BadgeClp extends BaseModelImpl<Badge> implements Badge {
-	public BadgeClp() {
+public class BadgeInstanceClp extends BaseModelImpl<BadgeInstance>
+	implements BadgeInstance {
+	public BadgeInstanceClp() {
 	}
 
+	@Override
 	public Class<?> getModelClass() {
-		return Badge.class;
+		return BadgeInstance.class;
 	}
 
+	@Override
 	public String getModelClassName() {
-		return Badge.class.getName();
+		return BadgeInstance.class.getName();
 	}
 
+	@Override
 	public long getPrimaryKey() {
-		return _badgeId;
+		return _badgeInstanceId;
 	}
 
+	@Override
 	public void setPrimaryKey(long primaryKey) {
-		setBadgeId(primaryKey);
+		setBadgeInstanceId(primaryKey);
 	}
 
+	@Override
 	public Serializable getPrimaryKeyObj() {
-		return new Long(_badgeId);
+		return _badgeInstanceId;
 	}
 
+	@Override
 	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
 		setPrimaryKey(((Long)primaryKeyObj).longValue());
 	}
@@ -67,7 +76,7 @@ public class BadgeClp extends BaseModelImpl<Badge> implements Badge {
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
-		attributes.put("badgeId", getBadgeId());
+		attributes.put("badgeInstanceId", getBadgeInstanceId());
 		attributes.put("companyId", getCompanyId());
 		attributes.put("userId", getUserId());
 		attributes.put("createDate", getCreateDate());
@@ -81,10 +90,10 @@ public class BadgeClp extends BaseModelImpl<Badge> implements Badge {
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Long badgeId = (Long)attributes.get("badgeId");
+		Long badgeInstanceId = (Long)attributes.get("badgeInstanceId");
 
-		if (badgeId != null) {
-			setBadgeId(badgeId);
+		if (badgeInstanceId != null) {
+			setBadgeInstanceId(badgeInstanceId);
 		}
 
 		Long companyId = (Long)attributes.get("companyId");
@@ -130,106 +139,271 @@ public class BadgeClp extends BaseModelImpl<Badge> implements Badge {
 		}
 	}
 
-	public long getBadgeId() {
-		return _badgeId;
+	@Override
+	public long getBadgeInstanceId() {
+		return _badgeInstanceId;
 	}
 
-	public void setBadgeId(long badgeId) {
-		_badgeId = badgeId;
+	@Override
+	public void setBadgeInstanceId(long badgeInstanceId) {
+		_badgeInstanceId = badgeInstanceId;
+
+		if (_badgeInstanceRemoteModel != null) {
+			try {
+				Class<?> clazz = _badgeInstanceRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setBadgeInstanceId", long.class);
+
+				method.invoke(_badgeInstanceRemoteModel, badgeInstanceId);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
 	}
 
+	@Override
 	public long getCompanyId() {
 		return _companyId;
 	}
 
+	@Override
 	public void setCompanyId(long companyId) {
 		_companyId = companyId;
+
+		if (_badgeInstanceRemoteModel != null) {
+			try {
+				Class<?> clazz = _badgeInstanceRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setCompanyId", long.class);
+
+				method.invoke(_badgeInstanceRemoteModel, companyId);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
 	}
 
+	@Override
 	public long getUserId() {
 		return _userId;
 	}
 
+	@Override
 	public void setUserId(long userId) {
 		_userId = userId;
+
+		if (_badgeInstanceRemoteModel != null) {
+			try {
+				Class<?> clazz = _badgeInstanceRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setUserId", long.class);
+
+				method.invoke(_badgeInstanceRemoteModel, userId);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
 	}
 
+	@Override
 	public String getUserUuid() throws SystemException {
 		return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
 	}
 
+	@Override
 	public void setUserUuid(String userUuid) {
 		_userUuid = userUuid;
 	}
 
+	@Override
 	public Date getCreateDate() {
 		return _createDate;
 	}
 
+	@Override
 	public void setCreateDate(Date createDate) {
 		_createDate = createDate;
+
+		if (_badgeInstanceRemoteModel != null) {
+			try {
+				Class<?> clazz = _badgeInstanceRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setCreateDate", Date.class);
+
+				method.invoke(_badgeInstanceRemoteModel, createDate);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
 	}
 
+	@Override
 	public Date getModifiedDate() {
 		return _modifiedDate;
 	}
 
+	@Override
 	public void setModifiedDate(Date modifiedDate) {
 		_modifiedDate = modifiedDate;
+
+		if (_badgeInstanceRemoteModel != null) {
+			try {
+				Class<?> clazz = _badgeInstanceRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setModifiedDate", Date.class);
+
+				method.invoke(_badgeInstanceRemoteModel, modifiedDate);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
 	}
 
+	@Override
 	public String getBadgeName() {
 		return _badgeName;
 	}
 
+	@Override
 	public void setBadgeName(String badgeName) {
 		_badgeName = badgeName;
+
+		if (_badgeInstanceRemoteModel != null) {
+			try {
+				Class<?> clazz = _badgeInstanceRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setBadgeName", String.class);
+
+				method.invoke(_badgeInstanceRemoteModel, badgeName);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
 	}
 
+	@Override
 	public int getBadgeLevel() {
 		return _badgeLevel;
 	}
 
+	@Override
 	public void setBadgeLevel(int badgeLevel) {
 		_badgeLevel = badgeLevel;
+
+		if (_badgeInstanceRemoteModel != null) {
+			try {
+				Class<?> clazz = _badgeInstanceRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setBadgeLevel", int.class);
+
+				method.invoke(_badgeInstanceRemoteModel, badgeLevel);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
 	}
 
+	@Override
 	public String getData() {
 		return _data;
 	}
 
+	@Override
 	public void setData(String data) {
 		_data = data;
+
+		if (_badgeInstanceRemoteModel != null) {
+			try {
+				Class<?> clazz = _badgeInstanceRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setData", String.class);
+
+				method.invoke(_badgeInstanceRemoteModel, data);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
 	}
 
-	public BaseModel<?> getBadgeRemoteModel() {
-		return _badgeRemoteModel;
+	public BaseModel<?> getBadgeInstanceRemoteModel() {
+		return _badgeInstanceRemoteModel;
 	}
 
-	public void setBadgeRemoteModel(BaseModel<?> badgeRemoteModel) {
-		_badgeRemoteModel = badgeRemoteModel;
+	public void setBadgeInstanceRemoteModel(
+		BaseModel<?> badgeInstanceRemoteModel) {
+		_badgeInstanceRemoteModel = badgeInstanceRemoteModel;
 	}
 
+	public Object invokeOnRemoteModel(String methodName,
+		Class<?>[] parameterTypes, Object[] parameterValues)
+		throws Exception {
+		Object[] remoteParameterValues = new Object[parameterValues.length];
+
+		for (int i = 0; i < parameterValues.length; i++) {
+			if (parameterValues[i] != null) {
+				remoteParameterValues[i] = ClpSerializer.translateInput(parameterValues[i]);
+			}
+		}
+
+		Class<?> remoteModelClass = _badgeInstanceRemoteModel.getClass();
+
+		ClassLoader remoteModelClassLoader = remoteModelClass.getClassLoader();
+
+		Class<?>[] remoteParameterTypes = new Class[parameterTypes.length];
+
+		for (int i = 0; i < parameterTypes.length; i++) {
+			if (parameterTypes[i].isPrimitive()) {
+				remoteParameterTypes[i] = parameterTypes[i];
+			}
+			else {
+				String parameterTypeName = parameterTypes[i].getName();
+
+				remoteParameterTypes[i] = remoteModelClassLoader.loadClass(parameterTypeName);
+			}
+		}
+
+		Method method = remoteModelClass.getMethod(methodName,
+				remoteParameterTypes);
+
+		Object returnValue = method.invoke(_badgeInstanceRemoteModel,
+				remoteParameterValues);
+
+		if (returnValue != null) {
+			returnValue = ClpSerializer.translateOutput(returnValue);
+		}
+
+		return returnValue;
+	}
+
+	@Override
 	public void persist() throws SystemException {
 		if (this.isNew()) {
-			BadgeLocalServiceUtil.addBadge(this);
+			BadgeInstanceLocalServiceUtil.addBadgeInstance(this);
 		}
 		else {
-			BadgeLocalServiceUtil.updateBadge(this);
+			BadgeInstanceLocalServiceUtil.updateBadgeInstance(this);
 		}
 	}
 
 	@Override
-	public Badge toEscapedModel() {
-		return (Badge)Proxy.newProxyInstance(Badge.class.getClassLoader(),
-			new Class[] { Badge.class }, new AutoEscapeBeanHandler(this));
+	public BadgeInstance toEscapedModel() {
+		return (BadgeInstance)ProxyUtil.newProxyInstance(BadgeInstance.class.getClassLoader(),
+			new Class[] { BadgeInstance.class }, new AutoEscapeBeanHandler(this));
 	}
 
 	@Override
 	public Object clone() {
-		BadgeClp clone = new BadgeClp();
+		BadgeInstanceClp clone = new BadgeInstanceClp();
 
-		clone.setBadgeId(getBadgeId());
+		clone.setBadgeInstanceId(getBadgeInstanceId());
 		clone.setCompanyId(getCompanyId());
 		clone.setUserId(getUserId());
 		clone.setCreateDate(getCreateDate());
@@ -241,13 +415,14 @@ public class BadgeClp extends BaseModelImpl<Badge> implements Badge {
 		return clone;
 	}
 
-	public int compareTo(Badge badge) {
+	@Override
+	public int compareTo(BadgeInstance badgeInstance) {
 		int value = 0;
 
-		if (getUserId() < badge.getUserId()) {
+		if (getUserId() < badgeInstance.getUserId()) {
 			value = -1;
 		}
-		else if (getUserId() > badge.getUserId()) {
+		else if (getUserId() > badgeInstance.getUserId()) {
 			value = 1;
 		}
 		else {
@@ -258,7 +433,8 @@ public class BadgeClp extends BaseModelImpl<Badge> implements Badge {
 			return value;
 		}
 
-		value = DateUtil.compareTo(getCreateDate(), badge.getCreateDate());
+		value = DateUtil.compareTo(getCreateDate(),
+				badgeInstance.getCreateDate());
 
 		if (value != 0) {
 			return value;
@@ -269,20 +445,17 @@ public class BadgeClp extends BaseModelImpl<Badge> implements Badge {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof BadgeInstanceClp)) {
 			return false;
 		}
 
-		BadgeClp badge = null;
+		BadgeInstanceClp badgeInstance = (BadgeInstanceClp)obj;
 
-		try {
-			badge = (BadgeClp)obj;
-		}
-		catch (ClassCastException cce) {
-			return false;
-		}
-
-		long primaryKey = badge.getPrimaryKey();
+		long primaryKey = badgeInstance.getPrimaryKey();
 
 		if (getPrimaryKey() == primaryKey) {
 			return true;
@@ -301,8 +474,8 @@ public class BadgeClp extends BaseModelImpl<Badge> implements Badge {
 	public String toString() {
 		StringBundler sb = new StringBundler(17);
 
-		sb.append("{badgeId=");
-		sb.append(getBadgeId());
+		sb.append("{badgeInstanceId=");
+		sb.append(getBadgeInstanceId());
 		sb.append(", companyId=");
 		sb.append(getCompanyId());
 		sb.append(", userId=");
@@ -322,16 +495,17 @@ public class BadgeClp extends BaseModelImpl<Badge> implements Badge {
 		return sb.toString();
 	}
 
+	@Override
 	public String toXmlString() {
 		StringBundler sb = new StringBundler(28);
 
 		sb.append("<model><model-name>");
-		sb.append("gamification.model.Badge");
+		sb.append("gamification.model.BadgeInstance");
 		sb.append("</model-name>");
 
 		sb.append(
-			"<column><column-name>badgeId</column-name><column-value><![CDATA[");
-		sb.append(getBadgeId());
+			"<column><column-name>badgeInstanceId</column-name><column-value><![CDATA[");
+		sb.append(getBadgeInstanceId());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>companyId</column-name><column-value><![CDATA[");
@@ -367,7 +541,7 @@ public class BadgeClp extends BaseModelImpl<Badge> implements Badge {
 		return sb.toString();
 	}
 
-	private long _badgeId;
+	private long _badgeInstanceId;
 	private long _companyId;
 	private long _userId;
 	private String _userUuid;
@@ -376,5 +550,5 @@ public class BadgeClp extends BaseModelImpl<Badge> implements Badge {
 	private String _badgeName;
 	private int _badgeLevel;
 	private String _data;
-	private BaseModel<?> _badgeRemoteModel;
+	private BaseModel<?> _badgeInstanceRemoteModel;
 }

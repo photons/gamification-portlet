@@ -44,8 +44,8 @@
 <%@ page import="gamification.badges.BadgesEngine" %>
 <%@ page import="gamification.badges.BadgeDefinition" %>
 
-<%@ page import="gamification.service.BadgeLocalServiceUtil" %>
-<%@ page import="gamification.model.Badge" %>
+<%@ page import="gamification.service.BadgeInstanceLocalServiceUtil" %>
+<%@ page import="gamification.model.BadgeInstance" %>
 
 <portlet:defineObjects />
 

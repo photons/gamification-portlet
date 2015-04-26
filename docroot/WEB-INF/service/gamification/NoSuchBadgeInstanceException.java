@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2012 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -19,21 +19,21 @@ import com.liferay.portal.NoSuchModelException;
 /**
  * @author Sebastien Le Marchand
  */
-public class NoSuchBadgeException extends NoSuchModelException {
+public class NoSuchBadgeInstanceException extends NoSuchModelException {
 
-	public NoSuchBadgeException() {
+	public NoSuchBadgeInstanceException() {
 		super();
 	}
 
-	public NoSuchBadgeException(String msg) {
+	public NoSuchBadgeInstanceException(String msg) {
 		super(msg);
 	}
 
-	public NoSuchBadgeException(String msg, Throwable cause) {
+	public NoSuchBadgeInstanceException(String msg, Throwable cause) {
 		super(msg, cause);
 	}
 
-	public NoSuchBadgeException(Throwable cause) {
+	public NoSuchBadgeInstanceException(Throwable cause) {
 		super(cause);
 	}
 

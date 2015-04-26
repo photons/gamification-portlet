@@ -14,7 +14,7 @@
  */
 %>
 
-	<div class="badge<%= (masked?" masked":"") %>">
+	<div class="badge-item<%= (masked?" masked":"") %>">
 		<img src="<%= contextPath + (masked?"/images/hidden.png":"/images/" +  name + ".png") %>">
 		
 		<div class="title"><%= LanguageUtil.get(pageContext, "badges." + name + ".title") %></div>

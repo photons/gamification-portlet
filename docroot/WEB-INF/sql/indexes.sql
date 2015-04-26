@@ -1,2 +1,2 @@
-create index IX_E2246C6A on GM_Badge (userId);
-create index IX_EBA93A54 on GM_Badge (userId, badgeName);
+create index IX_55B1BCDF on GM_BadgeInstance (userId);
+create index IX_B5DA7EBF on GM_BadgeInstance (userId, badgeName);

@@ -23,12 +23,12 @@ package gamification.model.impl;
  *
  * @author Sebastien Le Marchand
  */
-public class BadgeImpl extends BadgeBaseImpl {
+public class BadgeInstanceImpl extends BadgeInstanceBaseImpl {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never reference this class directly. All methods that expect a badge model instance should use the {@link gamification.model.Badge} interface instead.
 	 */
-	public BadgeImpl() {
+	public BadgeInstanceImpl() {
 	}
 }

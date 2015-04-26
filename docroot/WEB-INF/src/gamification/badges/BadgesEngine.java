@@ -32,6 +32,8 @@ import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.util.StringBundler;
+import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portlet.asset.model.AssetEntry;
 import com.liferay.portlet.social.model.SocialActivity;
 
@@ -73,30 +75,52 @@ public class BadgesEngine {
 	
 	private static String _toString(SocialActivity activity) throws SystemException {
 		
+		StringBundler sb = new StringBundler();
+		
 		AssetEntry entry = activity.getAssetEntry();
 		
-		String string = String.format(
-			"activityId:%1$d, assetEntry.entryId:%2$d, type:%3$d, className:%4$s, assetEntry.className:%5$s, classPK:%6$d, assetEntry.classPK:%7$d, "
-			+ "createDate:%8$d, assetEntry.createDate:%9$d, userId:%10$d, assetEntry.userId: %11$d, receiverUserId:%12$d,"
-			+ "mirrorActivityId:%13$d, groupId:%14$d, assetEntry.groupId:%15$d, extraData:%16$s",				
-			activity.getActivityId(),
-			entry.getEntryId(),
-			activity.getType(),
-			activity.getClassName(),
-			entry.getClassName(),
-			activity.getClassPK(),
-			entry.getClassPK(),
-			activity.getCreateDate(),
-			entry.getCreateDate().getTime(),
-			activity.getUserId(),
-			entry.getUserId(),
-			activity.getReceiverUserId(),
-			activity.getMirrorActivityId(),
-			activity.getGroupId(),
-			entry.getGroupId(),
-			activity.getExtraData());
+		if(entry != null) {
 		
-		return string;
+			sb.append(String.format(
+				"activityId:%1$d, assetEntry.entryId:%2$d, type:%3$d, className:%4$s, assetEntry.className:%5$s, classPK:%6$d, assetEntry.classPK:%7$d, "
+				+ "createDate:%8$d, assetEntry.createDate:%9$d, userId:%10$d, assetEntry.userId: %11$d, receiverUserId:%12$d,"
+				+ "mirrorActivityId:%13$d, groupId:%14$d, assetEntry.groupId:%15$d, extraData:%16$s",				
+				activity.getActivityId(),
+				entry.getEntryId(),
+				activity.getType(),
+				activity.getClassName(),
+				entry.getClassName(),
+				activity.getClassPK(),
+				entry.getClassPK(),
+				activity.getCreateDate(),
+				entry.getCreateDate().getTime(),
+				activity.getUserId(),
+				entry.getUserId(),
+				activity.getReceiverUserId(),
+				activity.getMirrorActivityId(),
+				activity.getGroupId(),
+				entry.getGroupId(),
+				activity.getExtraData()));
+			
+		} else {
+			
+			sb.append(String.format(
+					"activityId:%1$d, type:%2$d, className:%3$s, classPK:%4$d, "
+					+ "createDate:%5$d, userId:%6$d, receiverUserId:%7$d,"
+					+ "mirrorActivityId:%8$d, groupId:%9$d, extraData:%10$s",				
+					activity.getActivityId(),
+					activity.getType(),
+					activity.getClassName(),
+					activity.getClassPK(),
+					activity.getCreateDate(),
+					activity.getUserId(),
+					activity.getReceiverUserId(),
+					activity.getMirrorActivityId(),
+					activity.getGroupId(),
+					activity.getExtraData()));
+		}
+		
+		return sb.toString();
 	}
 	
 	private static List<BadgeDefinition> _badgeDefinitions;

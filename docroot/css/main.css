@@ -1,26 +1,25 @@
 
 
-.my-badges-portlet .badge, .badges-gallery-portlet .badge {
+.my-badges-portlet .badge-item, .badges-gallery-portlet .badge-item {
 	display: inline-block;
 	text-align: center;
 	margin: 5px 5px 5px 5px;
 }
 
-.my-badges-portlet .badge .title, .badges-gallery-portlet .badge .title {
+.my-badges-portlet .badge-item .title, .badges-gallery-portlet .badge-item .title {
 	font-size: smaller;
 	font-weight: bold
 }
 
-.my-badges-portlet .badge.masked .title, .badges-gallery-portlet .badge.masked .title {
+.my-badges-portlet .badge-item.masked .title, .badges-gallery-portlet .badge-item.masked .title {
 	color: #a7a8aa;
 }
 
-.my-badges-portlet .badge img, .badges-gallery-portlet .badge img {
+.my-badges-portlet .badge-item img, .badges-gallery-portlet .badge-item img {
 	width:  98px;
-	height: 94.5px;
 }
 
-.badges-gallery-portlet .badge .description { 
+.badges-gallery-portlet .badge-item .description { 
 	vertical-align: middle;
 	line-height: 100%;
 	font-size: larger;

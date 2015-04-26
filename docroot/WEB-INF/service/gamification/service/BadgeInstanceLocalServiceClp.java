@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2012 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -18,26 +18,28 @@ import com.liferay.portal.service.InvokableLocalService;
 
 /**
  * @author Sebastien Le Marchand
+ * @generated
  */
-public class BadgeLocalServiceClp implements BadgeLocalService {
-	public BadgeLocalServiceClp(InvokableLocalService invokableLocalService) {
+public class BadgeInstanceLocalServiceClp implements BadgeInstanceLocalService {
+	public BadgeInstanceLocalServiceClp(
+		InvokableLocalService invokableLocalService) {
 		_invokableLocalService = invokableLocalService;
 
-		_methodName0 = "addBadge";
+		_methodName0 = "addBadgeInstance";
 
-		_methodParameterTypes0 = new String[] { "gamification.model.Badge" };
+		_methodParameterTypes0 = new String[] { "gamification.model.BadgeInstance" };
 
-		_methodName1 = "createBadge";
+		_methodName1 = "createBadgeInstance";
 
 		_methodParameterTypes1 = new String[] { "long" };
 
-		_methodName2 = "deleteBadge";
+		_methodName2 = "deleteBadgeInstance";
 
 		_methodParameterTypes2 = new String[] { "long" };
 
-		_methodName3 = "deleteBadge";
+		_methodName3 = "deleteBadgeInstance";
 
-		_methodParameterTypes3 = new String[] { "gamification.model.Badge" };
+		_methodParameterTypes3 = new String[] { "gamification.model.BadgeInstance" };
 
 		_methodName4 = "dynamicQuery";
 
@@ -68,34 +70,37 @@ public class BadgeLocalServiceClp implements BadgeLocalService {
 				"com.liferay.portal.kernel.dao.orm.DynamicQuery"
 			};
 
-		_methodName9 = "fetchBadge";
+		_methodName9 = "dynamicQueryCount";
 
-		_methodParameterTypes9 = new String[] { "long" };
+		_methodParameterTypes9 = new String[] {
+				"com.liferay.portal.kernel.dao.orm.DynamicQuery",
+				"com.liferay.portal.kernel.dao.orm.Projection"
+			};
 
-		_methodName10 = "getBadge";
+		_methodName10 = "fetchBadgeInstance";
 
 		_methodParameterTypes10 = new String[] { "long" };
 
-		_methodName11 = "getPersistedModel";
+		_methodName11 = "getBadgeInstance";
 
-		_methodParameterTypes11 = new String[] { "java.io.Serializable" };
+		_methodParameterTypes11 = new String[] { "long" };
 
-		_methodName12 = "getBadges";
+		_methodName12 = "getPersistedModel";
 
-		_methodParameterTypes12 = new String[] { "int", "int" };
+		_methodParameterTypes12 = new String[] { "java.io.Serializable" };
 
-		_methodName13 = "getBadgesCount";
+		_methodName13 = "getBadgeInstances";
 
-		_methodParameterTypes13 = new String[] {  };
+		_methodParameterTypes13 = new String[] { "int", "int" };
 
-		_methodName14 = "updateBadge";
+		_methodName14 = "getBadgeInstancesCount";
 
-		_methodParameterTypes14 = new String[] { "gamification.model.Badge" };
+		_methodParameterTypes14 = new String[] {  };
 
-		_methodName15 = "updateBadge";
+		_methodName15 = "updateBadgeInstance";
 
 		_methodParameterTypes15 = new String[] {
-				"gamification.model.Badge", "boolean"
+				"gamification.model.BadgeInstance"
 			};
 
 		_methodName16 = "getBeanIdentifier";
@@ -106,31 +111,37 @@ public class BadgeLocalServiceClp implements BadgeLocalService {
 
 		_methodParameterTypes17 = new String[] { "java.lang.String" };
 
-		_methodName19 = "addBadge";
+		_methodName19 = "processSocialActivity";
 
-		_methodParameterTypes19 = new String[] { "long", "java.lang.String" };
+		_methodParameterTypes19 = new String[] { "long" };
 
-		_methodName20 = "checkBadge";
+		_methodName20 = "addBadgeInstance";
 
 		_methodParameterTypes20 = new String[] { "long", "java.lang.String" };
 
-		_methodName21 = "fetchBadge";
+		_methodName21 = "checkBadgeInstance";
 
 		_methodParameterTypes21 = new String[] { "long", "java.lang.String" };
 
-		_methodName22 = "getBadges";
+		_methodName22 = "fetchBadgeInstance";
 
-		_methodParameterTypes22 = new String[] { "long" };
+		_methodParameterTypes22 = new String[] { "long", "java.lang.String" };
+
+		_methodName23 = "getBadges";
+
+		_methodParameterTypes23 = new String[] { "long" };
 	}
 
-	public gamification.model.Badge addBadge(gamification.model.Badge badge)
+	@Override
+	public gamification.model.BadgeInstance addBadgeInstance(
+		gamification.model.BadgeInstance badgeInstance)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName0,
 					_methodParameterTypes0,
-					new Object[] { ClpSerializer.translateInput(badge) });
+					new Object[] { ClpSerializer.translateInput(badgeInstance) });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -148,15 +159,17 @@ public class BadgeLocalServiceClp implements BadgeLocalService {
 			}
 		}
 
-		return (gamification.model.Badge)ClpSerializer.translateOutput(returnObj);
+		return (gamification.model.BadgeInstance)ClpSerializer.translateOutput(returnObj);
 	}
 
-	public gamification.model.Badge createBadge(long badgeId) {
+	@Override
+	public gamification.model.BadgeInstance createBadgeInstance(
+		long badgeInstanceId) {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName1,
-					_methodParameterTypes1, new Object[] { badgeId });
+					_methodParameterTypes1, new Object[] { badgeInstanceId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -170,17 +183,19 @@ public class BadgeLocalServiceClp implements BadgeLocalService {
 			}
 		}
 
-		return (gamification.model.Badge)ClpSerializer.translateOutput(returnObj);
+		return (gamification.model.BadgeInstance)ClpSerializer.translateOutput(returnObj);
 	}
 
-	public gamification.model.Badge deleteBadge(long badgeId)
+	@Override
+	public gamification.model.BadgeInstance deleteBadgeInstance(
+		long badgeInstanceId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName2,
-					_methodParameterTypes2, new Object[] { badgeId });
+					_methodParameterTypes2, new Object[] { badgeInstanceId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -202,17 +217,19 @@ public class BadgeLocalServiceClp implements BadgeLocalService {
 			}
 		}
 
-		return (gamification.model.Badge)ClpSerializer.translateOutput(returnObj);
+		return (gamification.model.BadgeInstance)ClpSerializer.translateOutput(returnObj);
 	}
 
-	public gamification.model.Badge deleteBadge(gamification.model.Badge badge)
+	@Override
+	public gamification.model.BadgeInstance deleteBadgeInstance(
+		gamification.model.BadgeInstance badgeInstance)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName3,
 					_methodParameterTypes3,
-					new Object[] { ClpSerializer.translateInput(badge) });
+					new Object[] { ClpSerializer.translateInput(badgeInstance) });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -230,9 +247,10 @@ public class BadgeLocalServiceClp implements BadgeLocalService {
 			}
 		}
 
-		return (gamification.model.Badge)ClpSerializer.translateOutput(returnObj);
+		return (gamification.model.BadgeInstance)ClpSerializer.translateOutput(returnObj);
 	}
 
+	@Override
 	public com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery() {
 		Object returnObj = null;
 
@@ -255,6 +273,7 @@ public class BadgeLocalServiceClp implements BadgeLocalService {
 		return (com.liferay.portal.kernel.dao.orm.DynamicQuery)ClpSerializer.translateOutput(returnObj);
 	}
 
+	@Override
 	@SuppressWarnings("rawtypes")
 	public java.util.List dynamicQuery(
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
@@ -285,6 +304,7 @@ public class BadgeLocalServiceClp implements BadgeLocalService {
 		return (java.util.List)ClpSerializer.translateOutput(returnObj);
 	}
 
+	@Override
 	@SuppressWarnings("rawtypes")
 	public java.util.List dynamicQuery(
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery, int start,
@@ -321,6 +341,7 @@ public class BadgeLocalServiceClp implements BadgeLocalService {
 		return (java.util.List)ClpSerializer.translateOutput(returnObj);
 	}
 
+	@Override
 	@SuppressWarnings("rawtypes")
 	public java.util.List dynamicQuery(
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery, int start,
@@ -361,6 +382,7 @@ public class BadgeLocalServiceClp implements BadgeLocalService {
 		return (java.util.List)ClpSerializer.translateOutput(returnObj);
 	}
 
+	@Override
 	public long dynamicQueryCount(
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
@@ -390,13 +412,21 @@ public class BadgeLocalServiceClp implements BadgeLocalService {
 		return ((Long)returnObj).longValue();
 	}
 
-	public gamification.model.Badge fetchBadge(long badgeId)
+	@Override
+	public long dynamicQueryCount(
+		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery,
+		com.liferay.portal.kernel.dao.orm.Projection projection)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName9,
-					_methodParameterTypes9, new Object[] { badgeId });
+					_methodParameterTypes9,
+					new Object[] {
+						ClpSerializer.translateInput(dynamicQuery),
+						
+					ClpSerializer.translateInput(projection)
+					});
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -414,17 +444,48 @@ public class BadgeLocalServiceClp implements BadgeLocalService {
 			}
 		}
 
-		return (gamification.model.Badge)ClpSerializer.translateOutput(returnObj);
+		return ((Long)returnObj).longValue();
 	}
 
-	public gamification.model.Badge getBadge(long badgeId)
+	@Override
+	public gamification.model.BadgeInstance fetchBadgeInstance(
+		long badgeInstanceId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName10,
+					_methodParameterTypes10, new Object[] { badgeInstanceId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (gamification.model.BadgeInstance)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public gamification.model.BadgeInstance getBadgeInstance(
+		long badgeInstanceId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName10,
-					_methodParameterTypes10, new Object[] { badgeId });
+			returnObj = _invokableLocalService.invokeMethod(_methodName11,
+					_methodParameterTypes11, new Object[] { badgeInstanceId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -446,9 +507,10 @@ public class BadgeLocalServiceClp implements BadgeLocalService {
 			}
 		}
 
-		return (gamification.model.Badge)ClpSerializer.translateOutput(returnObj);
+		return (gamification.model.BadgeInstance)ClpSerializer.translateOutput(returnObj);
 	}
 
+	@Override
 	public com.liferay.portal.model.PersistedModel getPersistedModel(
 		java.io.Serializable primaryKeyObj)
 		throws com.liferay.portal.kernel.exception.PortalException,
@@ -456,8 +518,8 @@ public class BadgeLocalServiceClp implements BadgeLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName11,
-					_methodParameterTypes11,
+			returnObj = _invokableLocalService.invokeMethod(_methodName12,
+					_methodParameterTypes12,
 					new Object[] { ClpSerializer.translateInput(primaryKeyObj) });
 		}
 		catch (Throwable t) {
@@ -483,13 +545,15 @@ public class BadgeLocalServiceClp implements BadgeLocalService {
 		return (com.liferay.portal.model.PersistedModel)ClpSerializer.translateOutput(returnObj);
 	}
 
-	public java.util.List<gamification.model.Badge> getBadges(int start, int end)
+	@Override
+	public java.util.List<gamification.model.BadgeInstance> getBadgeInstances(
+		int start, int end)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName12,
-					_methodParameterTypes12, new Object[] { start, end });
+			returnObj = _invokableLocalService.invokeMethod(_methodName13,
+					_methodParameterTypes13, new Object[] { start, end });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -507,16 +571,17 @@ public class BadgeLocalServiceClp implements BadgeLocalService {
 			}
 		}
 
-		return (java.util.List<gamification.model.Badge>)ClpSerializer.translateOutput(returnObj);
+		return (java.util.List<gamification.model.BadgeInstance>)ClpSerializer.translateOutput(returnObj);
 	}
 
-	public int getBadgesCount()
+	@Override
+	public int getBadgeInstancesCount()
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName13,
-					_methodParameterTypes13, new Object[] {  });
+			returnObj = _invokableLocalService.invokeMethod(_methodName14,
+					_methodParameterTypes14, new Object[] {  });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -537,43 +602,16 @@ public class BadgeLocalServiceClp implements BadgeLocalService {
 		return ((Integer)returnObj).intValue();
 	}
 
-	public gamification.model.Badge updateBadge(gamification.model.Badge badge)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		Object returnObj = null;
-
-		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName14,
-					_methodParameterTypes14,
-					new Object[] { ClpSerializer.translateInput(badge) });
-		}
-		catch (Throwable t) {
-			t = ClpSerializer.translateThrowable(t);
-
-			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-				throw (com.liferay.portal.kernel.exception.SystemException)t;
-			}
-
-			if (t instanceof RuntimeException) {
-				throw (RuntimeException)t;
-			}
-			else {
-				throw new RuntimeException(t.getClass().getName() +
-					" is not a valid exception");
-			}
-		}
-
-		return (gamification.model.Badge)ClpSerializer.translateOutput(returnObj);
-	}
-
-	public gamification.model.Badge updateBadge(
-		gamification.model.Badge badge, boolean merge)
+	@Override
+	public gamification.model.BadgeInstance updateBadgeInstance(
+		gamification.model.BadgeInstance badgeInstance)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName15,
 					_methodParameterTypes15,
-					new Object[] { ClpSerializer.translateInput(badge), merge });
+					new Object[] { ClpSerializer.translateInput(badgeInstance) });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -591,9 +629,10 @@ public class BadgeLocalServiceClp implements BadgeLocalService {
 			}
 		}
 
-		return (gamification.model.Badge)ClpSerializer.translateOutput(returnObj);
+		return (gamification.model.BadgeInstance)ClpSerializer.translateOutput(returnObj);
 	}
 
+	@Override
 	public java.lang.String getBeanIdentifier() {
 		Object returnObj = null;
 
@@ -616,6 +655,7 @@ public class BadgeLocalServiceClp implements BadgeLocalService {
 		return (java.lang.String)ClpSerializer.translateOutput(returnObj);
 	}
 
+	@Override
 	public void setBeanIdentifier(java.lang.String beanIdentifier) {
 		try {
 			_invokableLocalService.invokeMethod(_methodName17,
@@ -635,25 +675,27 @@ public class BadgeLocalServiceClp implements BadgeLocalService {
 		}
 	}
 
+	@Override
 	public java.lang.Object invokeMethod(java.lang.String name,
 		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
 		throws java.lang.Throwable {
 		throw new UnsupportedOperationException();
 	}
 
-	public gamification.model.Badge addBadge(long userId,
-		java.lang.String badgeName)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		Object returnObj = null;
-
+	@Override
+	public void processSocialActivity(long activityId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName19,
-					_methodParameterTypes19,
-					new Object[] { userId, ClpSerializer.translateInput(
-							badgeName) });
+			_invokableLocalService.invokeMethod(_methodName19,
+				_methodParameterTypes19, new Object[] { activityId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
 
 			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
 				throw (com.liferay.portal.kernel.exception.SystemException)t;
@@ -667,20 +709,22 @@ public class BadgeLocalServiceClp implements BadgeLocalService {
 					" is not a valid exception");
 			}
 		}
-
-		return (gamification.model.Badge)ClpSerializer.translateOutput(returnObj);
 	}
 
-	public gamification.model.Badge checkBadge(long userId,
-		java.lang.String badgeName)
+	@Override
+	public gamification.model.BadgeInstance addBadgeInstance(long userId,
+		java.lang.String badgeInstanceName)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName20,
 					_methodParameterTypes20,
-					new Object[] { userId, ClpSerializer.translateInput(
-							badgeName) });
+					new Object[] {
+						userId,
+						
+					ClpSerializer.translateInput(badgeInstanceName)
+					});
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -698,17 +742,52 @@ public class BadgeLocalServiceClp implements BadgeLocalService {
 			}
 		}
 
-		return (gamification.model.Badge)ClpSerializer.translateOutput(returnObj);
+		return (gamification.model.BadgeInstance)ClpSerializer.translateOutput(returnObj);
 	}
 
-	public gamification.model.Badge fetchBadge(long userId,
-		java.lang.String badgeName)
+	@Override
+	public gamification.model.BadgeInstance checkBadgeInstance(long userId,
+		java.lang.String badgeInstanceName)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName21,
 					_methodParameterTypes21,
+					new Object[] {
+						userId,
+						
+					ClpSerializer.translateInput(badgeInstanceName)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (gamification.model.BadgeInstance)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public gamification.model.BadgeInstance fetchBadgeInstance(long userId,
+		java.lang.String badgeName)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName22,
+					_methodParameterTypes22,
 					new Object[] { userId, ClpSerializer.translateInput(
 							badgeName) });
 		}
@@ -728,16 +807,17 @@ public class BadgeLocalServiceClp implements BadgeLocalService {
 			}
 		}
 
-		return (gamification.model.Badge)ClpSerializer.translateOutput(returnObj);
+		return (gamification.model.BadgeInstance)ClpSerializer.translateOutput(returnObj);
 	}
 
-	public java.util.List<gamification.model.Badge> getBadges(long userId)
-		throws com.liferay.portal.kernel.exception.SystemException {
+	@Override
+	public java.util.List<gamification.model.BadgeInstance> getBadges(
+		long userId) throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName22,
-					_methodParameterTypes22, new Object[] { userId });
+			returnObj = _invokableLocalService.invokeMethod(_methodName23,
+					_methodParameterTypes23, new Object[] { userId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -755,7 +835,7 @@ public class BadgeLocalServiceClp implements BadgeLocalService {
 			}
 		}
 
-		return (java.util.List<gamification.model.Badge>)ClpSerializer.translateOutput(returnObj);
+		return (java.util.List<gamification.model.BadgeInstance>)ClpSerializer.translateOutput(returnObj);
 	}
 
 	private InvokableLocalService _invokableLocalService;
@@ -803,4 +883,6 @@ public class BadgeLocalServiceClp implements BadgeLocalService {
 	private String[] _methodParameterTypes21;
 	private String _methodName22;
 	private String[] _methodParameterTypes22;
+	private String _methodName23;
+	private String[] _methodParameterTypes23;
 }

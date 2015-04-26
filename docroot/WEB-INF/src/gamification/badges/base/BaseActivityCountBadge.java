@@ -15,8 +15,8 @@
 package gamification.badges.base;
 
 import gamification.badges.BadgeDefinition;
-import gamification.model.Badge;
-import gamification.service.BadgeLocalServiceUtil;
+import gamification.model.BadgeInstance;
+import gamification.service.BadgeInstanceLocalServiceUtil;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -72,13 +72,13 @@ public abstract class BaseActivityCountBadge implements BadgeDefinition {
 			
 		String badgeName = getName();
 		
-		Badge badge = BadgeLocalServiceUtil.checkBadge(userId, badgeName);
+		BadgeInstance badgeInstance = BadgeInstanceLocalServiceUtil.checkBadgeInstance(userId, badgeName);
 		
-		int level = badge.getBadgeLevel();
+		int level = badgeInstance.getBadgeLevel();
 		
 		if(level < getMaximumLevel()) {
 		
-			List<Long >dates = _deserializeDates(badge.getData());
+			List<Long >dates = _deserializeDates(badgeInstance.getData());
 			
 			if(!dates.isEmpty()) {
 				
@@ -98,13 +98,13 @@ public abstract class BaseActivityCountBadge implements BadgeDefinition {
 			
 			if(dates.size() >= getRequiredCount()) {
 				level += 1;
-				badge.setBadgeLevel(level);
+				badgeInstance.setBadgeLevel(level);
 				dates.clear();
 			}
 			
-			badge.setData(_serializeDates(dates));
+			badgeInstance.setData(_serializeDates(dates));
 			
-			BadgeLocalServiceUtil.updateBadge(badge);
+			BadgeInstanceLocalServiceUtil.updateBadgeInstance(badgeInstance);
 		}
 	}
 	

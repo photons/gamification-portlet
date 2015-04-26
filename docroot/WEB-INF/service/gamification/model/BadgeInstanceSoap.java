@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2012 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -21,16 +21,17 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * This class is used by SOAP remote services.
+ * This class is used by SOAP remote services, specifically {@link gamification.service.http.BadgeInstanceServiceSoap}.
  *
- * @author    Sebastien Le Marchand
+ * @author Sebastien Le Marchand
+ * @see gamification.service.http.BadgeInstanceServiceSoap
  * @generated
  */
-public class BadgeSoap implements Serializable {
-	public static BadgeSoap toSoapModel(Badge model) {
-		BadgeSoap soapModel = new BadgeSoap();
+public class BadgeInstanceSoap implements Serializable {
+	public static BadgeInstanceSoap toSoapModel(BadgeInstance model) {
+		BadgeInstanceSoap soapModel = new BadgeInstanceSoap();
 
-		soapModel.setBadgeId(model.getBadgeId());
+		soapModel.setBadgeInstanceId(model.getBadgeInstanceId());
 		soapModel.setCompanyId(model.getCompanyId());
 		soapModel.setUserId(model.getUserId());
 		soapModel.setCreateDate(model.getCreateDate());
@@ -42,8 +43,8 @@ public class BadgeSoap implements Serializable {
 		return soapModel;
 	}
 
-	public static BadgeSoap[] toSoapModels(Badge[] models) {
-		BadgeSoap[] soapModels = new BadgeSoap[models.length];
+	public static BadgeInstanceSoap[] toSoapModels(BadgeInstance[] models) {
+		BadgeInstanceSoap[] soapModels = new BadgeInstanceSoap[models.length];
 
 		for (int i = 0; i < models.length; i++) {
 			soapModels[i] = toSoapModel(models[i]);
@@ -52,14 +53,14 @@ public class BadgeSoap implements Serializable {
 		return soapModels;
 	}
 
-	public static BadgeSoap[][] toSoapModels(Badge[][] models) {
-		BadgeSoap[][] soapModels = null;
+	public static BadgeInstanceSoap[][] toSoapModels(BadgeInstance[][] models) {
+		BadgeInstanceSoap[][] soapModels = null;
 
 		if (models.length > 0) {
-			soapModels = new BadgeSoap[models.length][models[0].length];
+			soapModels = new BadgeInstanceSoap[models.length][models[0].length];
 		}
 		else {
-			soapModels = new BadgeSoap[0][0];
+			soapModels = new BadgeInstanceSoap[0][0];
 		}
 
 		for (int i = 0; i < models.length; i++) {
@@ -69,33 +70,33 @@ public class BadgeSoap implements Serializable {
 		return soapModels;
 	}
 
-	public static BadgeSoap[] toSoapModels(List<Badge> models) {
-		List<BadgeSoap> soapModels = new ArrayList<BadgeSoap>(models.size());
+	public static BadgeInstanceSoap[] toSoapModels(List<BadgeInstance> models) {
+		List<BadgeInstanceSoap> soapModels = new ArrayList<BadgeInstanceSoap>(models.size());
 
-		for (Badge model : models) {
+		for (BadgeInstance model : models) {
 			soapModels.add(toSoapModel(model));
 		}
 
-		return soapModels.toArray(new BadgeSoap[soapModels.size()]);
+		return soapModels.toArray(new BadgeInstanceSoap[soapModels.size()]);
 	}
 
-	public BadgeSoap() {
+	public BadgeInstanceSoap() {
 	}
 
 	public long getPrimaryKey() {
-		return _badgeId;
+		return _badgeInstanceId;
 	}
 
 	public void setPrimaryKey(long pk) {
-		setBadgeId(pk);
+		setBadgeInstanceId(pk);
 	}
 
-	public long getBadgeId() {
-		return _badgeId;
+	public long getBadgeInstanceId() {
+		return _badgeInstanceId;
 	}
 
-	public void setBadgeId(long badgeId) {
-		_badgeId = badgeId;
+	public void setBadgeInstanceId(long badgeInstanceId) {
+		_badgeInstanceId = badgeInstanceId;
 	}
 
 	public long getCompanyId() {
@@ -154,7 +155,7 @@ public class BadgeSoap implements Serializable {
 		_data = data;
 	}
 
-	private long _badgeId;
+	private long _badgeInstanceId;
 	private long _companyId;
 	private long _userId;
 	private Date _createDate;

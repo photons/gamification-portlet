@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2012 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -25,7 +25,7 @@ import com.liferay.portal.kernel.util.PropsUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.BaseModel;
 
-import gamification.model.BadgeClp;
+import gamification.model.BadgeInstanceClp;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -36,7 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Brian Wing Shun Chan
+ * @author Sebastien Le Marchand
  */
 public class ClpSerializer {
 	public static String getServletContextName() {
@@ -102,8 +102,8 @@ public class ClpSerializer {
 
 		String oldModelClassName = oldModelClass.getName();
 
-		if (oldModelClassName.equals(BadgeClp.class.getName())) {
-			return translateInputBadge(oldModel);
+		if (oldModelClassName.equals(BadgeInstanceClp.class.getName())) {
+			return translateInputBadgeInstance(oldModel);
 		}
 
 		return oldModel;
@@ -121,10 +121,10 @@ public class ClpSerializer {
 		return newList;
 	}
 
-	public static Object translateInputBadge(BaseModel<?> oldModel) {
-		BadgeClp oldClpModel = (BadgeClp)oldModel;
+	public static Object translateInputBadgeInstance(BaseModel<?> oldModel) {
+		BadgeInstanceClp oldClpModel = (BadgeInstanceClp)oldModel;
 
-		BaseModel<?> newModel = oldClpModel.getBadgeRemoteModel();
+		BaseModel<?> newModel = oldClpModel.getBadgeInstanceRemoteModel();
 
 		newModel.setModelAttributes(oldClpModel.getModelAttributes());
 
@@ -148,8 +148,9 @@ public class ClpSerializer {
 
 		String oldModelClassName = oldModelClass.getName();
 
-		if (oldModelClassName.equals("gamification.model.impl.BadgeImpl")) {
-			return translateOutputBadge(oldModel);
+		if (oldModelClassName.equals(
+					"gamification.model.impl.BadgeInstanceImpl")) {
+			return translateOutputBadgeInstance(oldModel);
 		}
 
 		return oldModel;
@@ -232,19 +233,19 @@ public class ClpSerializer {
 			return new SystemException();
 		}
 
-		if (className.equals("gamification.NoSuchBadgeException")) {
-			return new gamification.NoSuchBadgeException();
+		if (className.equals("gamification.NoSuchBadgeInstanceException")) {
+			return new gamification.NoSuchBadgeInstanceException();
 		}
 
 		return throwable;
 	}
 
-	public static Object translateOutputBadge(BaseModel<?> oldModel) {
-		BadgeClp newModel = new BadgeClp();
+	public static Object translateOutputBadgeInstance(BaseModel<?> oldModel) {
+		BadgeInstanceClp newModel = new BadgeInstanceClp();
 
 		newModel.setModelAttributes(oldModel.getModelAttributes());
 
-		newModel.setBadgeRemoteModel(oldModel);
+		newModel.setBadgeInstanceRemoteModel(oldModel);
 
 		return newModel;
 	}

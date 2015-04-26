@@ -4,11 +4,11 @@
 	<author>Sebastien Le Marchand</author>
 	<namespace>GM</namespace>
 
-	<entity name="Badge" local-service="true" remote-service="false">
+	<entity name="BadgeInstance" local-service="true" remote-service="true">
 
 		<!-- PK fields -->
 
-		<column name="badgeId" type="long" primary="true" />
+		<column name="badgeInstanceId" type="long" primary="true" />
 
 		<!-- Audit fields -->
 

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2012 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -17,18 +17,18 @@ package gamification.model;
 import com.liferay.portal.model.PersistedModel;
 
 /**
- * The extended model interface for the Badge service. Represents a row in the &quot;GM_Badge&quot; database table, with each column mapped to a property of this class.
+ * The extended model interface for the BadgeInstance service. Represents a row in the &quot;GM_BadgeInstance&quot; database table, with each column mapped to a property of this class.
  *
  * @author Sebastien Le Marchand
- * @see BadgeModel
- * @see gamification.model.impl.BadgeImpl
- * @see gamification.model.impl.BadgeModelImpl
+ * @see BadgeInstanceModel
+ * @see gamification.model.impl.BadgeInstanceImpl
+ * @see gamification.model.impl.BadgeInstanceModelImpl
  * @generated
  */
-public interface Badge extends BadgeModel, PersistedModel {
+public interface BadgeInstance extends BadgeInstanceModel, PersistedModel {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify this interface directly. Add methods to {@link gamification.model.impl.BadgeImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
+	 * Never modify this interface directly. Add methods to {@link gamification.model.impl.BadgeInstanceImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
 }

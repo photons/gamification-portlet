@@ -7,3 +7,4 @@
 .project
 docroot/WEB-INF/classes
 portal-compat-client.jar
+.tern-project

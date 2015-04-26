@@ -1,8 +1,11 @@
 <?xml version="1.0"?>
 
 <model-hints>
-	<model name="gamification.model.Badge">
-		<field name="badgeId" type="long" />
+	<hint-collection name="CLOB">
+		<hint name="max-length">2000000</hint>
+	</hint-collection>
+	<model name="gamification.model.BadgeInstance">
+		<field name="badgeInstanceId" type="long" />
 		<field name="companyId" type="long" />
 		<field name="userId" type="long" />
 		<field name="createDate" type="Date" />

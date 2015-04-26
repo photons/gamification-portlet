@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2012 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -17,11 +17,12 @@ package gamification.service.messaging;
 import com.liferay.portal.kernel.messaging.BaseMessageListener;
 import com.liferay.portal.kernel.messaging.Message;
 
-import gamification.service.BadgeLocalServiceUtil;
+import gamification.service.BadgeInstanceLocalServiceUtil;
+import gamification.service.BadgeInstanceServiceUtil;
 import gamification.service.ClpSerializer;
 
 /**
- * @author Brian Wing Shun Chan
+ * @author Sebastien Le Marchand
  */
 public class ClpMessageListener extends BaseMessageListener {
 	public static String getServletContextName() {
@@ -35,7 +36,9 @@ public class ClpMessageListener extends BaseMessageListener {
 
 		if (command.equals("undeploy") &&
 				servletContextName.equals(getServletContextName())) {
-			BadgeLocalServiceUtil.clearService();
+			BadgeInstanceLocalServiceUtil.clearService();
+
+			BadgeInstanceServiceUtil.clearService();
 		}
 	}
 }

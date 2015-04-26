@@ -7,9 +7,9 @@
 			<access>PROPERTY</access>
 		</persistence-unit-defaults>
 	</persistence-unit-metadata>
-	<mapped-superclass class="gamification.model.impl.BadgeModelImpl">
+	<mapped-superclass class="gamification.model.impl.BadgeInstanceModelImpl">
 		<attributes>
-			<id name="badgeId" />
+			<id name="badgeInstanceId" />
 			<basic name="companyId" />
 			<basic name="userId" />
 			<basic name="createDate">
@@ -29,8 +29,8 @@
 			<transient name="userUuid" />
 		</attributes>
 	</mapped-superclass>
-	<entity class="gamification.model.impl.BadgeImpl" name="Badge">
-		<table name="GM_Badge" />
+	<entity class="gamification.model.impl.BadgeInstanceImpl" name="BadgeInstance">
+		<table name="GM_BadgeInstance" />
 		<attributes />
 	</entity>
 </entity-mappings>

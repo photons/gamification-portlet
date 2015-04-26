@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2012 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -14,30 +14,31 @@
 
 package gamification.service.base;
 
-import gamification.service.BadgeLocalServiceUtil;
+import gamification.service.BadgeInstanceLocalServiceUtil;
 
 import java.util.Arrays;
 
 /**
- * @author Brian Wing Shun Chan
+ * @author Sebastien Le Marchand
+ * @generated
  */
-public class BadgeLocalServiceClpInvoker {
-	public BadgeLocalServiceClpInvoker() {
-		_methodName0 = "addBadge";
+public class BadgeInstanceLocalServiceClpInvoker {
+	public BadgeInstanceLocalServiceClpInvoker() {
+		_methodName0 = "addBadgeInstance";
 
-		_methodParameterTypes0 = new String[] { "gamification.model.Badge" };
+		_methodParameterTypes0 = new String[] { "gamification.model.BadgeInstance" };
 
-		_methodName1 = "createBadge";
+		_methodName1 = "createBadgeInstance";
 
 		_methodParameterTypes1 = new String[] { "long" };
 
-		_methodName2 = "deleteBadge";
+		_methodName2 = "deleteBadgeInstance";
 
 		_methodParameterTypes2 = new String[] { "long" };
 
-		_methodName3 = "deleteBadge";
+		_methodName3 = "deleteBadgeInstance";
 
-		_methodParameterTypes3 = new String[] { "gamification.model.Badge" };
+		_methodParameterTypes3 = new String[] { "gamification.model.BadgeInstance" };
 
 		_methodName4 = "dynamicQuery";
 
@@ -68,113 +69,110 @@ public class BadgeLocalServiceClpInvoker {
 				"com.liferay.portal.kernel.dao.orm.DynamicQuery"
 			};
 
-		_methodName9 = "fetchBadge";
+		_methodName9 = "dynamicQueryCount";
 
-		_methodParameterTypes9 = new String[] { "long" };
+		_methodParameterTypes9 = new String[] {
+				"com.liferay.portal.kernel.dao.orm.DynamicQuery",
+				"com.liferay.portal.kernel.dao.orm.Projection"
+			};
 
-		_methodName10 = "getBadge";
+		_methodName10 = "fetchBadgeInstance";
 
 		_methodParameterTypes10 = new String[] { "long" };
 
-		_methodName11 = "getPersistedModel";
+		_methodName11 = "getBadgeInstance";
 
-		_methodParameterTypes11 = new String[] { "java.io.Serializable" };
+		_methodParameterTypes11 = new String[] { "long" };
 
-		_methodName12 = "getBadges";
+		_methodName12 = "getPersistedModel";
 
-		_methodParameterTypes12 = new String[] { "int", "int" };
+		_methodParameterTypes12 = new String[] { "java.io.Serializable" };
 
-		_methodName13 = "getBadgesCount";
+		_methodName13 = "getBadgeInstances";
 
-		_methodParameterTypes13 = new String[] {  };
+		_methodParameterTypes13 = new String[] { "int", "int" };
 
-		_methodName14 = "updateBadge";
+		_methodName14 = "getBadgeInstancesCount";
 
-		_methodParameterTypes14 = new String[] { "gamification.model.Badge" };
+		_methodParameterTypes14 = new String[] {  };
 
-		_methodName15 = "updateBadge";
+		_methodName15 = "updateBadgeInstance";
 
 		_methodParameterTypes15 = new String[] {
-				"gamification.model.Badge", "boolean"
+				"gamification.model.BadgeInstance"
 			};
 
-		_methodName36 = "getBeanIdentifier";
+		_methodName34 = "getBeanIdentifier";
 
-		_methodParameterTypes36 = new String[] {  };
+		_methodParameterTypes34 = new String[] {  };
 
-		_methodName37 = "setBeanIdentifier";
+		_methodName35 = "setBeanIdentifier";
 
-		_methodParameterTypes37 = new String[] { "java.lang.String" };
+		_methodParameterTypes35 = new String[] { "java.lang.String" };
 
-		_methodName42 = "addBadge";
+		_methodName40 = "processSocialActivity";
+
+		_methodParameterTypes40 = new String[] { "long" };
+
+		_methodName41 = "addBadgeInstance";
+
+		_methodParameterTypes41 = new String[] { "long", "java.lang.String" };
+
+		_methodName42 = "checkBadgeInstance";
 
 		_methodParameterTypes42 = new String[] { "long", "java.lang.String" };
 
-		_methodName43 = "checkBadge";
+		_methodName43 = "fetchBadgeInstance";
 
 		_methodParameterTypes43 = new String[] { "long", "java.lang.String" };
 
-		_methodName44 = "fetchBadge";
+		_methodName44 = "getBadges";
 
-		_methodParameterTypes44 = new String[] { "long", "java.lang.String" };
-
-		_methodName45 = "getBadges";
-
-		_methodParameterTypes45 = new String[] { "long" };
-
-		_methodName46 = "updateBadge";
-
-		_methodParameterTypes46 = new String[] { "gamification.model.Badge" };
-
-		_methodName47 = "updateBadge";
-
-		_methodParameterTypes47 = new String[] {
-				"gamification.model.Badge", "boolean"
-			};
+		_methodParameterTypes44 = new String[] { "long" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
 		Object[] arguments) throws Throwable {
 		if (_methodName0.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes0, parameterTypes)) {
-			return BadgeLocalServiceUtil.addBadge((gamification.model.Badge)arguments[0]);
+			return BadgeInstanceLocalServiceUtil.addBadgeInstance((gamification.model.BadgeInstance)arguments[0]);
 		}
 
 		if (_methodName1.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes1, parameterTypes)) {
-			return BadgeLocalServiceUtil.createBadge(((Long)arguments[0]).longValue());
+			return BadgeInstanceLocalServiceUtil.createBadgeInstance(((Long)arguments[0]).longValue());
 		}
 
 		if (_methodName2.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes2, parameterTypes)) {
-			return BadgeLocalServiceUtil.deleteBadge(((Long)arguments[0]).longValue());
+			return BadgeInstanceLocalServiceUtil.deleteBadgeInstance(((Long)arguments[0]).longValue());
 		}
 
 		if (_methodName3.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes3, parameterTypes)) {
-			return BadgeLocalServiceUtil.deleteBadge((gamification.model.Badge)arguments[0]);
+			return BadgeInstanceLocalServiceUtil.deleteBadgeInstance((gamification.model.BadgeInstance)arguments[0]);
 		}
 
 		if (_methodName4.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes4, parameterTypes)) {
-			return BadgeLocalServiceUtil.dynamicQuery();
+			return BadgeInstanceLocalServiceUtil.dynamicQuery();
 		}
 
 		if (_methodName5.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes5, parameterTypes)) {
-			return BadgeLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0]);
+			return BadgeInstanceLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0]);
 		}
 
 		if (_methodName6.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes6, parameterTypes)) {
-			return BadgeLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0],
+			return BadgeInstanceLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0],
 				((Integer)arguments[1]).intValue(),
 				((Integer)arguments[2]).intValue());
 		}
 
 		if (_methodName7.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes7, parameterTypes)) {
-			return BadgeLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0],
+			return BadgeInstanceLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0],
 				((Integer)arguments[1]).intValue(),
 				((Integer)arguments[2]).intValue(),
 				(com.liferay.portal.kernel.util.OrderByComparator)arguments[3]);
@@ -182,88 +180,86 @@ public class BadgeLocalServiceClpInvoker {
 
 		if (_methodName8.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes8, parameterTypes)) {
-			return BadgeLocalServiceUtil.dynamicQueryCount((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0]);
+			return BadgeInstanceLocalServiceUtil.dynamicQueryCount((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0]);
 		}
 
 		if (_methodName9.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes9, parameterTypes)) {
-			return BadgeLocalServiceUtil.fetchBadge(((Long)arguments[0]).longValue());
+			return BadgeInstanceLocalServiceUtil.dynamicQueryCount((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0],
+				(com.liferay.portal.kernel.dao.orm.Projection)arguments[1]);
 		}
 
 		if (_methodName10.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes10, parameterTypes)) {
-			return BadgeLocalServiceUtil.getBadge(((Long)arguments[0]).longValue());
+			return BadgeInstanceLocalServiceUtil.fetchBadgeInstance(((Long)arguments[0]).longValue());
 		}
 
 		if (_methodName11.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes11, parameterTypes)) {
-			return BadgeLocalServiceUtil.getPersistedModel((java.io.Serializable)arguments[0]);
+			return BadgeInstanceLocalServiceUtil.getBadgeInstance(((Long)arguments[0]).longValue());
 		}
 
 		if (_methodName12.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes12, parameterTypes)) {
-			return BadgeLocalServiceUtil.getBadges(((Integer)arguments[0]).intValue(),
-				((Integer)arguments[1]).intValue());
+			return BadgeInstanceLocalServiceUtil.getPersistedModel((java.io.Serializable)arguments[0]);
 		}
 
 		if (_methodName13.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes13, parameterTypes)) {
-			return BadgeLocalServiceUtil.getBadgesCount();
+			return BadgeInstanceLocalServiceUtil.getBadgeInstances(((Integer)arguments[0]).intValue(),
+				((Integer)arguments[1]).intValue());
 		}
 
 		if (_methodName14.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes14, parameterTypes)) {
-			return BadgeLocalServiceUtil.updateBadge((gamification.model.Badge)arguments[0]);
+			return BadgeInstanceLocalServiceUtil.getBadgeInstancesCount();
 		}
 
 		if (_methodName15.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes15, parameterTypes)) {
-			return BadgeLocalServiceUtil.updateBadge((gamification.model.Badge)arguments[0],
-				((Boolean)arguments[1]).booleanValue());
+			return BadgeInstanceLocalServiceUtil.updateBadgeInstance((gamification.model.BadgeInstance)arguments[0]);
 		}
 
-		if (_methodName36.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes36, parameterTypes)) {
-			return BadgeLocalServiceUtil.getBeanIdentifier();
+		if (_methodName34.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes34, parameterTypes)) {
+			return BadgeInstanceLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName37.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes37, parameterTypes)) {
-			BadgeLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
+		if (_methodName35.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes35, parameterTypes)) {
+			BadgeInstanceLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
+
+			return null;
+		}
+
+		if (_methodName40.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes40, parameterTypes)) {
+			BadgeInstanceLocalServiceUtil.processSocialActivity(((Long)arguments[0]).longValue());
+
+			return null;
+		}
+
+		if (_methodName41.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes41, parameterTypes)) {
+			return BadgeInstanceLocalServiceUtil.addBadgeInstance(((Long)arguments[0]).longValue(),
+				(java.lang.String)arguments[1]);
 		}
 
 		if (_methodName42.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes42, parameterTypes)) {
-			return BadgeLocalServiceUtil.addBadge(((Long)arguments[0]).longValue(),
+			return BadgeInstanceLocalServiceUtil.checkBadgeInstance(((Long)arguments[0]).longValue(),
 				(java.lang.String)arguments[1]);
 		}
 
 		if (_methodName43.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes43, parameterTypes)) {
-			return BadgeLocalServiceUtil.checkBadge(((Long)arguments[0]).longValue(),
+			return BadgeInstanceLocalServiceUtil.fetchBadgeInstance(((Long)arguments[0]).longValue(),
 				(java.lang.String)arguments[1]);
 		}
 
 		if (_methodName44.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes44, parameterTypes)) {
-			return BadgeLocalServiceUtil.fetchBadge(((Long)arguments[0]).longValue(),
-				(java.lang.String)arguments[1]);
-		}
-
-		if (_methodName45.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes45, parameterTypes)) {
-			return BadgeLocalServiceUtil.getBadges(((Long)arguments[0]).longValue());
-		}
-
-		if (_methodName46.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes46, parameterTypes)) {
-			return BadgeLocalServiceUtil.updateBadge((gamification.model.Badge)arguments[0]);
-		}
-
-		if (_methodName47.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes47, parameterTypes)) {
-			return BadgeLocalServiceUtil.updateBadge((gamification.model.Badge)arguments[0],
-				((Boolean)arguments[1]).booleanValue());
+			return BadgeInstanceLocalServiceUtil.getBadges(((Long)arguments[0]).longValue());
 		}
 
 		throw new UnsupportedOperationException();
@@ -301,20 +297,18 @@ public class BadgeLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName36;
-	private String[] _methodParameterTypes36;
-	private String _methodName37;
-	private String[] _methodParameterTypes37;
+	private String _methodName34;
+	private String[] _methodParameterTypes34;
+	private String _methodName35;
+	private String[] _methodParameterTypes35;
+	private String _methodName40;
+	private String[] _methodParameterTypes40;
+	private String _methodName41;
+	private String[] _methodParameterTypes41;
 	private String _methodName42;
 	private String[] _methodParameterTypes42;
 	private String _methodName43;
 	private String[] _methodParameterTypes43;
 	private String _methodName44;
 	private String[] _methodParameterTypes44;
-	private String _methodName45;
-	private String[] _methodParameterTypes45;
-	private String _methodName46;
-	private String[] _methodParameterTypes46;
-	private String _methodName47;
-	private String[] _methodParameterTypes47;
 }
