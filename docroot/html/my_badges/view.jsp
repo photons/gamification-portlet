@@ -1,6 +1,6 @@
-<%
+<%--
 /**
- * Copyright (c) 2013 Sebastien Le Marchand.
+ * Copyright (c) 2013-present Sebastien Le Marchand.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -12,18 +12,22 @@
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
  */
-%>
+--%>
 
 <%@ include file="../init.jsp" %>
 
-<% 
-if(user2 == null) {
+<%
+if (user2 == null) {
 %>
+
 	<liferay-ui:message key="this-application-will-only-function-when-placed-on-a-user-page" />
+
 <%
 } else {
 %>
+
 	<%@ include file="/html/my_badges/view_my_badges.jspf" %>
+
 <%
 }
 %>

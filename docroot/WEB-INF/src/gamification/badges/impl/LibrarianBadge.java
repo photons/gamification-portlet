@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2013 Sébastien Le Marchand, All rights reserved.
+ * Copyright (c) 2013-present Sébastien Le Marchand, All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -14,9 +14,6 @@
 
 package gamification.badges.impl;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portlet.documentlibrary.model.DLFileEntry;
@@ -26,6 +23,9 @@ import com.liferay.portlet.documentlibrary.model.DLFolder;
 import com.liferay.portlet.social.model.SocialActivity;
 
 import gamification.badges.base.BaseActivityCountBadge;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author Sebastien Le Marchand
@@ -46,16 +46,15 @@ public class LibrarianBadge extends BaseActivityCountBadge {
 
 	@Override
 	protected boolean match(SocialActivity activity)
-		throws SystemException, PortalException {
+		throws PortalException, SystemException {
 
 		boolean match = _CLASSNAMES.contains(activity.getClassName());
-		
-		
+
 		return match;
 	}
-	
+
 	private static final Set<String >_CLASSNAMES = new HashSet<String>();
-	
+
 	static {
 		_CLASSNAMES.add(DLFileEntry.class.toString());
 		_CLASSNAMES.add(DLFileVersion.class.toString());

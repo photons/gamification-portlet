@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2013 Sébastien Le Marchand, All rights reserved.
+ * Copyright (c) 2013-present Sébastien Le Marchand, All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -14,19 +14,15 @@
 
 package gamification.hook.model;
 
-import gamification.badges.BadgesEngine;
-import gamification.model.BadgeInstance;
-import gamification.service.BadgeInstanceLocalServiceUtil;
-import gamification.util.MessageSender;
-
 import com.liferay.portal.ModelListenerException;
-import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.model.BaseModelListener;
 import com.liferay.portlet.social.model.SocialActivity;
+
+import gamification.util.MessageSender;
 
 /**
  * @author Sebastien Le Marchand
@@ -40,19 +36,18 @@ public class SocialActivityListener extends BaseModelListener<SocialActivity> {
 	@Override
 	public void onAfterCreate(SocialActivity model)
 		throws ModelListenerException {
-		
-		if(_log.isDebugEnabled()) {
+
+		if (_log.isDebugEnabled()) {
 			_log.debug("onAfterCreate(model = " + JSONFactoryUtil.serialize(model) + ")");
 		}
-		
+
 		try {
 			MessageSender.sendMessage(model);
 		} catch (SystemException e) {
 			_log.error(e);
-		}		
-	
+		}
 	}
-	
-	private static final Log _log = LogFactoryUtil.getLog(SocialActivityListener.class);
-	
+
+	private static Log _log = LogFactoryUtil.getLog(SocialActivityListener.class);
+
 }

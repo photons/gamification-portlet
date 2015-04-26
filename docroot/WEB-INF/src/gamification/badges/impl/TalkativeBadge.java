@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2013 Sébastien Le Marchand, All rights reserved.
+ * Copyright (c) 2013-present Sébastien Le Marchand, All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -14,20 +14,21 @@
 
 package gamification.badges.impl;
 
-import gamification.badges.base.BaseActivityCountBadge;
-import gamification.social.MBActivityKeys;
-
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portlet.messageboards.model.MBMessage;
 import com.liferay.portlet.social.model.SocialActivity;
 import com.liferay.portlet.social.model.SocialActivityConstants;
 
+import gamification.badges.base.BaseActivityCountBadge;
+
+import gamification.social.MBActivityKeys;
+
 /**
  * @author Sebastien Le Marchand
  */
 public class TalkativeBadge extends BaseActivityCountBadge {
-	
+
 	@Override
 	public String getName() {
 		return "talkative";
@@ -40,13 +41,13 @@ public class TalkativeBadge extends BaseActivityCountBadge {
 
 	@Override
 	protected boolean match(SocialActivity activity)
-		throws SystemException, PortalException {
+		throws PortalException, SystemException {
 
 		boolean match = (activity.getType() == SocialActivityConstants.TYPE_ADD_COMMENT)
 						|| (activity.getClassName().equals(MBMessage.class.getName()) &&
 										(activity.getType() == MBActivityKeys.ADD_MESSAGE)
 										|| activity.getType() == MBActivityKeys.REPLY_MESSAGE);
-		
+
 		return match;
 	}
 }

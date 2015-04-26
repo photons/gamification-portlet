@@ -36,10 +36,10 @@
 			<finder-column name="userId" />
 			<finder-column name="badgeName" />
 		</finder>
-		
+
 		<finder name="UserId" return-type="Collection">
 			<finder-column name="userId" />
 		</finder>
-		
+
 	</entity>
 </service-builder>

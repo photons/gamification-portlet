@@ -1,6 +1,6 @@
-<%
+<%--
 /**
- * Copyright (c) 2013 Sebastien Le Marchand.
+ * Copyright (c) 2013-present Sebastien Le Marchand.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -12,32 +12,36 @@
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
  */
-%>
+--%>
 
 <%@ include file="../init.jsp" %>
 
 <h1></h1>
 
 <table>
-<% 
-for(BadgeDefinition badge: BadgesEngine.getBadgeDefinitions()) { 
+
+<%
+for (BadgeDefinition badge: BadgesEngine.getBadgeDefinitions()) {
 	String name = badge.getName();
 	boolean masked = false;
 %>
+
 	<tr>
 		<td>
 			<%@ include file="/html/badge.jspf" %>
 		</td>
-		
+
 		<td>
 			<p class="description">
 				<%= LanguageUtil.get(pageContext, "badges." + name + ".description") %>
 			</p>
 		</td>
 	<tr>
+
 <%
-} 
+}
 %>
+
 </table>
 
 <div class="attributions"><a href="<%= contextPath %>/attributions.html" target="_blank">Attributions</a></div>

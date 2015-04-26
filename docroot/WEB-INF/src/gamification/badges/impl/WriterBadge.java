@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2013 Sébastien Le Marchand, All rights reserved.
+ * Copyright (c) 2013-present Sébastien Le Marchand, All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -20,6 +20,7 @@ import com.liferay.portlet.blogs.model.BlogsEntry;
 import com.liferay.portlet.social.model.SocialActivity;
 
 import gamification.badges.base.BaseActivityCountBadge;
+
 import gamification.social.BlogsActivityKeys;
 
 /**
@@ -41,12 +42,12 @@ public class WriterBadge extends BaseActivityCountBadge {
 
 	@Override
 	protected boolean match(SocialActivity activity)
-		throws SystemException, PortalException {
+		throws PortalException, SystemException {
 
-		boolean match = 
+		boolean match =
 			activity.getClassName().equals(BlogsEntry.class) && activity.getType() == BlogsActivityKeys.ADD_ENTRY;
-		
+
 		return match;
 	}
-	
+
 }

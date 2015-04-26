@@ -1,6 +1,6 @@
-<%
+<%--
 /**
- * Copyright (c) 2013 Sebastien Le Marchand.
+ * Copyright (c) 2013-present Sebastien Le Marchand.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -12,20 +12,22 @@
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
  */
+--%>
+
+<%
+for (BadgeDefinition badgeDefinition: BadgesEngine.getBadgeDefinitions()) {
+
+	String name = badgeDefinition.getName();
+
+	BadgeInstance badge = BadgeInstanceLocalServiceUtil.fetchBadgeInstance(user2.getUserId(), name);
+
+	boolean masked = (badge == null || badge.getBadgeLevel() == 0);
 %>
 
-<% 
-for(BadgeDefinition badgeDefinition: BadgesEngine.getBadgeDefinitions()) { 
-	
-	String name = badgeDefinition.getName();
-	
-	BadgeInstance badge = BadgeInstanceLocalServiceUtil.fetchBadgeInstance(user2.getUserId(), name);
-	
-	boolean masked = (badge == null || badge.getBadgeLevel() == 0);
-	
-%>
 	<%@ include file="/html/badge.jspf" %>
+
 <%
-} 
+}
 %>
+
 </table>

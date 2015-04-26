@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2013 Sébastien Le Marchand, All rights reserved.
+ * Copyright (c) 2013-present Sébastien Le Marchand, All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -14,9 +14,6 @@
 
 package gamification.badges.impl;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portlet.documentlibrary.model.DLFileEntry;
@@ -24,7 +21,11 @@ import com.liferay.portlet.documentlibrary.service.DLFileEntryLocalServiceUtil;
 import com.liferay.portlet.social.model.SocialActivity;
 
 import gamification.badges.base.BaseActivityCountBadge;
+
 import gamification.social.DLActivityKeys;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author Sebastien Le Marchand
@@ -45,21 +46,21 @@ public class PhotographerBadge extends BaseActivityCountBadge {
 
 	@Override
 	protected boolean match(SocialActivity activity)
-		throws SystemException, PortalException {
+		throws PortalException, SystemException {
 
 		boolean match = false;
-		
-		if(activity.getClassName().equals(DLFileEntry.class.getName()) && activity.getType() == DLActivityKeys.ADD_FILE_ENTRY ) {
+
+		if (activity.getClassName().equals(DLFileEntry.class.getName()) && activity.getType() == DLActivityKeys.ADD_FILE_ENTRY ) {
 			long fileEntryId = activity.getClassPK();
 			DLFileEntry entry = DLFileEntryLocalServiceUtil.getFileEntry(fileEntryId);
 			match = _PICTURE_MIMETYPES.contains(entry.getMimeType().toLowerCase());
 		}
-		
+
 		return match;
 	}
-	
+
 	private static Set<String> _PICTURE_MIMETYPES = new HashSet<String>();
-	
+
 	static {
 		_PICTURE_MIMETYPES.add("image/bmp");
 		_PICTURE_MIMETYPES.add("image/cgm");

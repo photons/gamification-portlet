@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2013 Sébastien Le Marchand, All rights reserved.
+ * Copyright (c) 2013-present Sébastien Le Marchand, All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -14,11 +14,11 @@
 
 package gamification.badges.impl;
 
-import gamification.badges.base.BaseActivityCountBadge;
-
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portlet.asset.model.AssetEntry;
 import com.liferay.portlet.social.model.SocialActivity;
+
+import gamification.badges.base.BaseActivityCountBadge;
 
 /**
  * @author Sebastien Le Marchand
@@ -39,18 +39,18 @@ public class HumanBadge extends BaseActivityCountBadge {
 	protected boolean match(SocialActivity activity) throws SystemException {
 
 		AssetEntry entry = activity.getAssetEntry();
-		
+
 		String[] tags = entry.getTagNames();
-		
+
 		boolean match = false;
-		
+
 		for (int i = 0; i < tags.length && !match; i++) {
 			String tag = tags[i];
-			match = tag.equalsIgnoreCase("humanresources")
-							|| tag.equalsIgnoreCase("human resources")
-							|| tag.equalsIgnoreCase("hr");
+			match = tag.equalsIgnoreCase("humanresources") ||
+							 tag.equalsIgnoreCase("human resources") ||
+							 tag.equalsIgnoreCase("hr");
 		}
-		
+
 		return match;
 	}
 }

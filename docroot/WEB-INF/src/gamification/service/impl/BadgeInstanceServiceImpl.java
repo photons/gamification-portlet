@@ -31,7 +31,7 @@ import gamification.service.base.BadgeInstanceServiceBaseImpl;
  * @see gamification.service.BadgeInstanceServiceUtil
  */
 public class BadgeInstanceServiceImpl extends BadgeInstanceServiceBaseImpl {
-	/*
+	/**
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never reference this interface directly. Always use {@link gamification.service.BadgeInstanceServiceUtil} to access the badge instance remote service.

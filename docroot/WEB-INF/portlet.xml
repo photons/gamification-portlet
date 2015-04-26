@@ -1,13 +1,10 @@
 <?xml version="1.0"?>
 
 <portlet-app xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" version="2.0">
-	
 	<portlet>
 		<portlet-name>1</portlet-name>
 		<display-name>My Badges</display-name>
-		<portlet-class>
-			com.liferay.util.bridges.mvc.MVCPortlet
-		</portlet-class>
+		<portlet-class>com.liferay.util.bridges.mvc.MVCPortlet</portlet-class>
 		<init-param>
 			<name>view-template</name>
 			<value>/html/my_badges/view.jsp</value>
@@ -21,7 +18,7 @@
 		<portlet-info>
 			<title>My Badges</title>
 			<short-title>My Badges</short-title>
-			<keywords></keywords>
+			<keywords/>
 		</portlet-info>
 		<security-role-ref>
 			<role-name>administrator</role-name>
@@ -39,9 +36,7 @@
 	<portlet>
 		<portlet-name>2</portlet-name>
 		<display-name>Badges Gallery</display-name>
-		<portlet-class>
-			com.liferay.util.bridges.mvc.MVCPortlet
-		</portlet-class>
+		<portlet-class>com.liferay.util.bridges.mvc.MVCPortlet</portlet-class>
 		<init-param>
 			<name>view-template</name>
 			<value>/html/badges_gallery/view.jsp</value>
@@ -55,7 +50,7 @@
 		<portlet-info>
 			<title>Badges Gallery</title>
 			<short-title>Badges Gallery</short-title>
-			<keywords></keywords>
+			<keywords/>
 		</portlet-info>
 		<security-role-ref>
 			<role-name>administrator</role-name>

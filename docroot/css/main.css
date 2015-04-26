@@ -19,14 +19,14 @@
 	width:  98px;
 }
 
-.badges-gallery-portlet .badge-item .description { 
+.badges-gallery-portlet .badge-item .description {
 	vertical-align: middle;
 	line-height: 100%;
 	font-size: larger;
 	margin-left: 8em;
 }
 
-.badges-gallery-portlet .attributions { 
+.badges-gallery-portlet .attributions {
 	text-align: right;
 	width: 100%;
 	font-size: xx-small;

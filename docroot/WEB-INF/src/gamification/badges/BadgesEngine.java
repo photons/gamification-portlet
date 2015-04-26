@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2013 Sébastien Le Marchand, All rights reserved.
+ * Copyright (c) 2013-present Sébastien Le Marchand, All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -13,6 +13,14 @@
  */
 
 package gamification.badges;
+
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.util.StringBundler;
+import com.liferay.portlet.asset.model.AssetEntry;
+import com.liferay.portlet.social.model.SocialActivity;
 
 import gamification.badges.impl.HumanBadge;
 import gamification.badges.impl.LibrarianBadge;
@@ -28,35 +36,30 @@ import gamification.badges.impl.WriterBadge;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.liferay.portal.kernel.exception.PortalException;
-import com.liferay.portal.kernel.exception.SystemException;
-import com.liferay.portal.kernel.log.Log;
-import com.liferay.portal.kernel.log.LogFactoryUtil;
-import com.liferay.portal.kernel.util.StringBundler;
-import com.liferay.portal.kernel.util.StringPool;
-import com.liferay.portlet.asset.model.AssetEntry;
-import com.liferay.portlet.social.model.SocialActivity;
-
 /**
  * @author Sebastien Le Marchand
  */
 public class BadgesEngine {
-	
+
+	public static List<BadgeDefinition> getBadgeDefinitions() {
+		return _badgeDefinitions;
+	}
+
 	public static void processActivity(SocialActivity activity) throws SystemException {
-		
-		if(_log.isDebugEnabled()) {
-			_log.debug("Processing SocialActivity " 
-							+ _toString(activity));	
+
+		if (_log.isDebugEnabled()) {
+			_log.debug("Processing SocialActivity " +
+							_toString(activity));
 		}
-		
+
 		for (BadgeDefinition badgeDefinition : getBadgeDefinitions()) {
-			
-			if(_log.isDebugEnabled()) {
-				_log.debug("Processing SocialActivity "
-								+ activity.getActivityId()
-								+ " for " + badgeDefinition.getName());
+
+			if (_log.isDebugEnabled()) {
+				_log.debug("Processing SocialActivity " +
+								activity.getActivityId() +
+								" for " + badgeDefinition.getName());
 			}
-			
+
 			try {
 				badgeDefinition.processActivity(activity);
 			}
@@ -68,63 +71,48 @@ public class BadgesEngine {
 			}
 		}
 	}
-	
-	public static List<BadgeDefinition> getBadgeDefinitions() {
-		return _badgeDefinitions;	
-	}
-	
+
 	private static String _toString(SocialActivity activity) throws SystemException {
-		
+
 		StringBundler sb = new StringBundler();
-		
+
 		AssetEntry entry = activity.getAssetEntry();
-		
-		if(entry != null) {
-		
+
+		if (entry != null) {
+
 			sb.append(String.format(
 				"activityId:%1$d, assetEntry.entryId:%2$d, type:%3$d, className:%4$s, assetEntry.className:%5$s, classPK:%6$d, assetEntry.classPK:%7$d, "
 				+ "createDate:%8$d, assetEntry.createDate:%9$d, userId:%10$d, assetEntry.userId: %11$d, receiverUserId:%12$d,"
-				+ "mirrorActivityId:%13$d, groupId:%14$d, assetEntry.groupId:%15$d, extraData:%16$s",				
-				activity.getActivityId(),
-				entry.getEntryId(),
-				activity.getType(),
-				activity.getClassName(),
-				entry.getClassName(),
-				activity.getClassPK(),
-				entry.getClassPK(),
-				activity.getCreateDate(),
-				entry.getCreateDate().getTime(),
-				activity.getUserId(),
-				entry.getUserId(),
-				activity.getReceiverUserId(),
-				activity.getMirrorActivityId(),
-				activity.getGroupId(),
-				entry.getGroupId(),
+				+ "mirrorActivityId:%13$d, groupId:%14$d, assetEntry.groupId:%15$d, extraData:%16$s",
+				activity.getActivityId(), entry.getEntryId(),
+				activity.getType(), activity.getClassName(),
+				entry.getClassName(), activity.getClassPK(), entry.getClassPK(),
+				activity.getCreateDate(), entry.getCreateDate().getTime(),
+				activity.getUserId(), entry.getUserId(),
+				activity.getReceiverUserId(), activity.getMirrorActivityId(),
+				activity.getGroupId(), entry.getGroupId(),
 				activity.getExtraData()));
-			
+
 		} else {
-			
+
 			sb.append(String.format(
-					"activityId:%1$d, type:%2$d, className:%3$s, classPK:%4$d, "
-					+ "createDate:%5$d, userId:%6$d, receiverUserId:%7$d,"
-					+ "mirrorActivityId:%8$d, groupId:%9$d, extraData:%10$s",				
-					activity.getActivityId(),
-					activity.getType(),
-					activity.getClassName(),
-					activity.getClassPK(),
-					activity.getCreateDate(),
-					activity.getUserId(),
+					"activityId:%1$d, type:%2$d, className:%3$s, classPK:%4$d, " +
+					"createDate:%5$d, userId:%6$d, receiverUserId:%7$d," +
+					"mirrorActivityId:%8$d, groupId:%9$d, extraData:%10$s",
+					activity.getActivityId(), activity.getType(),
+					activity.getClassName(), activity.getClassPK(),
+					activity.getCreateDate(), activity.getUserId(),
 					activity.getReceiverUserId(),
-					activity.getMirrorActivityId(),
-					activity.getGroupId(),
+					activity.getMirrorActivityId(), activity.getGroupId(),
 					activity.getExtraData()));
 		}
-		
+
 		return sb.toString();
 	}
-	
+
+	private static Log _log = LogFactoryUtil.getLog(BadgesEngine.class);
 	private static List<BadgeDefinition> _badgeDefinitions;
-	
+
 	static {
 		_badgeDefinitions = new LinkedList<BadgeDefinition>();
 		_badgeDefinitions.add(new NewbieBadge());
@@ -141,7 +129,5 @@ public class BadgesEngine {
 		_badgeDefinitions.add(new RabbitBadge());
 		_badgeDefinitions.add(new PhotographerBadge());
 	}
-	
-	private static final Log _log = LogFactoryUtil.getLog(BadgesEngine.class);
 
 }
